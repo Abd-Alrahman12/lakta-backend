@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lakta (لَقْطة) – modern web design studio creating high-converting websites for businesses coming from Instagram. Landing pages, online stores, portfolios and more."
+    />
+    <title>لَقْطة (Lakta) – Web Design for Instagram Clients</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-mark"></span>
+          <span class="logo-text" data-i18n="brandName">InstaWeb Studio</span>
+        </div>
+        <nav class="main-nav">
+          <a href="#home" data-i18n="navHome">Home</a>
+          <a href="#services" data-i18n="navServices">Services</a>
+          <a href="#offers" data-i18n="navOffers">Offers</a>
+          <a href="#portfolio" data-i18n="navPortfolio">Portfolio</a>
+          <a href="#request" data-i18n="navRequest">Request a Website</a>
+          <a href="#contact" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn btn-outline" id="orderTop" data-scroll-target="#request" data-i18n="orderCta">
+            Order Your Website
+          </button>
+          <div class="language-switcher" aria-label="Language switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ar">ع</button>
+          </div>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="hero-kicker" data-i18n="heroKicker">Websites That Convert Your Instagram Followers</p>
+            <h1 data-i18n="heroTitle">Turn your Instagram traffic into real clients</h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">
+              We design fast, modern, mobile‑first websites tailored for businesses that grow through Instagram and social media.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-scroll-target="#request" data-i18n="heroPrimaryCta">
+                Order Your Website
+              </button>
+              <button class="btn btn-ghost" data-scroll-target="#portfolio" data-i18n="heroSecondaryCta">
+                View Portfolio
+              </button>
+            </div>
+            <div class="hero-meta">
+              <span data-i18n="heroMeta1">Ready in as fast as 7 days</span>
+              <span data-i18n="heroMeta2">Optimized for Instagram traffic</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="mockup-card">
+              <div class="mockup-browser">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-left">
+                  <div class="mockup-title"></div>
+                  <div class="mockup-line"></div>
+                  <div class="mockup-line short"></div>
+                  <div class="mockup-cta"></div>
+                </div>
+                <div class="mockup-right">
+                  <div class="mockup-media"></div>
+                </div>
+              </div>
+              <div class="mockup-badge" data-i18n="heroBadge">
+                Perfect for Instagram campaigns
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 data-i18n="servicesTitle">Services</h2>
+            <p data-i18n="servicesSubtitle">
+              Everything you need to launch a professional online presence for your Instagram audience.
+            </p>
+          </div>
+          <div class="grid services-grid">
+            <article class="card service-card">
+              <div class="card-icon">🏢</div>
+              <h3 data-i18n="serviceBusinessTitle">Business Websites</h3>
+              <p data-i18n="serviceBusinessBody">
+                Clean, credible websites for companies that want to turn Instagram visitors into real inquiries and bookings.
+              </p>
+            </article>
+            <article class="card service-card">
+              <div class="card-icon">🛒</div>
+              <h3 data-i18n="serviceStoreTitle">Online Stores</h3>
+              <p data-i18n="serviceStoreBody">
+                Simple, conversion‑focused store layouts that make it easy for your followers to browse and buy.
+              </p>
+            </article>
+            <article class="card service-card">
+              <div class="card-icon">🚀</div>
+              <h3 data-i18n="serviceLandingTitle">Landing Pages</h3>
+              <p data-i18n="serviceLandingBody">
+                High‑impact pages for ads and campaigns that come directly from your Instagram bio or stories.
+              </p>
+            </article>
+            <article class="card service-card">
+              <div class="card-icon">🎨</div>
+              <h3 data-i18n="servicePortfolioTitle">Portfolio Websites</h3>
+              <p data-i18n="servicePortfolioBody">
+                Minimal portfolio sites that showcase your work, testimonials, and Instagram content beautifully.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="offers" class="section section-accent">
+        <div class="container">
+          <div class="section-header">
+            <h2 data-i18n="offersTitle">Current Offers</h2>
+            <p data-i18n="offersSubtitle">
+              Limited‑time packages created especially for businesses growing through Instagram.
+            </p>
+          </div>
+          <div id="offersList" class="grid offers-grid" aria-live="polite"></div>
+          <p id="offersEmpty" class="empty-text" data-i18n="offersEmpty">
+            No active offers at the moment. Follow our Instagram for upcoming discounts.
+          </p>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 data-i18n="portfolioTitle">Portfolio</h2>
+            <p data-i18n="portfolioSubtitle">
+              A taste of clean, modern websites we can design for your business.
+            </p>
+          </div>
+          <div id="portfolioList" class="grid portfolio-grid" aria-live="polite"></div>
+          <p id="portfolioEmpty" class="empty-text">
+            No projects have been added yet.
+          </p>
+        </div>
+      </section>
+
+      <section id="request" class="section section-highlight">
+        <div class="container">
+          <div class="section-header">
+            <h2 data-i18n="requestTitle">Request a Website</h2>
+            <p data-i18n="requestSubtitle">
+              Tell us what you need and we’ll contact you with a clear plan, timeline, and price.
+            </p>
+          </div>
+          <div class="grid request-grid">
+            <form id="requestForm" class="card request-form" novalidate  action="https://formspree.io/f/mgonkrnl" method="post">
+              <div class="field-group">
+                <label for="name" data-i18n="formNameLabel">Name</label>
+                <input id="name" name="name" type="text" required placeholder="" />
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="email" data-i18n="formEmailLabel">Email</label>
+                  <input id="email" name="email" type="email" required placeholder="" />
+                </div>
+                <div class="field-group">
+                  <label for="phone" data-i18n="formPhoneLabel">Phone (WhatsApp)</label>
+                  <input id="phone" name="phone" type="tel" required placeholder="" />
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="websiteType" data-i18n="formTypeLabel">Type of website</label>
+                <select id="websiteType" name="websiteType" required>
+                  <option value="" disabled selected hidden data-i18n="formTypePlaceholder">
+                    Choose a type
+                  </option>
+                  <option value="business" data-i18n="formTypeBusiness">Business website</option>
+                  <option value="store" data-i18n="formTypeStore">Online store</option>
+                  <option value="landing" data-i18n="formTypeLanding">Landing page</option>
+                  <option value="portfolio" data-i18n="formTypePortfolio">Portfolio website</option>
+                  <option value="other" data-i18n="formTypeOther">Other</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="message" data-i18n="formMessageLabel">Project details</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder=""
+                ></textarea>
+              </div>
+              <div class="form-footer">
+                <p class="form-hint" data-i18n="formHint">
+                  We’ll reply within 24 hours via WhatsApp or email with the next steps.
+                </p>
+                <button class="btn btn-primary" type="submit" data-i18n="formSubmit">
+                  Submit Request
+                </button>
+              </div>
+              <p id="formStatus" class="form-status" aria-live="polite"></p>
+            </form>
+            <div class="request-aside">
+              <h3 data-i18n="requestAsideTitle">Perfect for Instagram growth</h3>
+              <ul class="checklist">
+                <li data-i18n="requestAsideItem1">Designed to match your Instagram branding</li>
+                <li data-i18n="requestAsideItem2">Clear call‑to‑action to WhatsApp or DMs</li>
+                <li data-i18n="requestAsideItem3">Fast loading on mobile devices</li>
+                <li data-i18n="requestAsideItem4">SEO‑friendly structure for Google</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-muted">
+        <div class="container">
+          <div class="section-header">
+            <h2 data-i18n="contactTitle">Contact</h2>
+            <p data-i18n="contactSubtitle">
+              The fastest way to reach us is via WhatsApp or Instagram DM.
+            </p>
+          </div>
+          <div class="grid contact-grid">
+            <div class="contact-card card">
+              <h3 data-i18n="contactEmailTitle">Email</h3>
+              <a id="contactEmailLink" href="mailto:hello@instawebstudio.com">hello@instawebstudio.com</a>
+            </div>
+            <div class="contact-card card">
+              <h3 data-i18n="contactWhatsAppTitle">WhatsApp</h3>
+              <a
+                id="contactWhatsAppLink"
+                href="https://wa.me/000000000000"
+                target="_blank"
+                rel="noopener"
+                data-i18n="contactWhatsAppLink"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+            <div class="contact-card card">
+              <h3 data-i18n="contactSocialTitle">Social</h3>
+              <a
+                id="contactInstagramLink"
+                href="https://instagram.com/yourstudio"
+                target="_blank"
+                rel="noopener"
+              >
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p data-i18n="footerCopy">
+          © <span id="year"></span> InstaWeb Studio. All rights reserved.
+        </p>
+        <a href="admin.html" class="footer-link" data-i18n="footerAdmin">Admin Panel</a>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
+

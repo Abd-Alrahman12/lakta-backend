@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - لَقْطة (Lakta)</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="admin-body">
+    <header class="site-header admin-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-mark"></span>
+          <span class="logo-text">لَقْطة (Lakta) – Admin</span>
+        </div>
+        <nav class="main-nav admin-nav">
+          <a href="#requests">Requests</a>
+          <a href="#contact-info">Contact</a>
+          <a href="#admin-portfolio">Portfolio</a>
+          <a href="#admin-offers">Offers</a>
+          <a href="/" target="_blank">View Website</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <section id="requests" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Customer Requests</h2>
+            <p>New website requests submitted from the main site.</p>
+          </div>
+          <div class="card admin-card">
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Type</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody id="requestsTableBody">
+                  <tr>
+                    <td colspan="6" class="table-empty">No requests yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-offers" class="section section-muted">
+        <div class="container">
+          <div class="section-header">
+            <h2>Manage Offers</h2>
+            <p>Create, edit, and delete promotional offers shown on the main website.</p>
+          </div>
+
+          <div class="grid admin-offers-grid">
+            <form id="offerForm" class="card admin-form">
+              <h3>Create / Update Offer</h3>
+              <input type="hidden" id="offerId" />
+              <div class="field-group">
+                <label for="titleEn">Title (English)</label>
+                <input id="titleEn" type="text" required />
+              </div>
+              <div class="field-group">
+                <label for="titleAr">Title (Arabic)</label>
+                <input id="titleAr" type="text" required />
+              </div>
+              <div class="field-group">
+                <label for="descriptionEn">Description (English)</label>
+                <textarea id="descriptionEn" rows="2"></textarea>
+              </div>
+              <div class="field-group">
+                <label for="descriptionAr">Description (Arabic)</label>
+                <textarea id="descriptionAr" rows="2"></textarea>
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="price">Price / Note</label>
+                  <input id="price" type="text" placeholder="e.g. From $299 or 20% off" />
+                </div>
+                <div class="field-group checkbox-group">
+                  <label>
+                    <input type="checkbox" id="highlight" />
+                    Highlight this offer
+                  </label>
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary" id="offerSubmitBtn">
+                  Save Offer
+                </button>
+                <button type="button" class="btn btn-ghost" id="offerResetBtn">
+                  Clear
+                </button>
+              </div>
+              <p id="offerFormStatus" class="form-status" aria-live="polite"></p>
+            </form>
+
+            <div class="card admin-card">
+              <h3>Existing Offers</h3>
+              <div id="adminOffersList" class="admin-offers-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact-info" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Contact Information</h2>
+            <p>Update the contact details shown on the main website (email, WhatsApp, Instagram).</p>
+          </div>
+          <div class="card admin-card">
+            <form id="contactForm" class="admin-form">
+              <div class="field-row">
+                <div class="field-group">
+                  <label for="contactEmail">Email</label>
+                  <input id="contactEmail" type="email" placeholder="hello@instawebstudio.com" />
+                </div>
+                <div class="field-group">
+                  <label for="contactPhone">Phone / WhatsApp (numbers only)</label>
+                  <input id="contactPhone" type="text" placeholder="e.g. 9665XXXXXXXX" />
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="contactInstagram">Instagram link</label>
+                <input
+                  id="contactInstagram"
+                  type="url"
+                  placeholder="https://instagram.com/yourstudio"
+                />
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Save Contact</button>
+              </div>
+              <p id="contactFormStatus" class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-portfolio" class="section section-muted">
+        <div class="container">
+          <div class="section-header">
+            <h2>Manage Portfolio</h2>
+            <p>Add, edit, or delete the projects shown in the "Portfolio" section of the main site.</p>
+          </div>
+
+          <div class="grid admin-offers-grid">
+            <form id="portfolioForm" class="card admin-form">
+              <h3>Create / Update Project</h3>
+              <input type="hidden" id="portfolioId" />
+              <div class="field-group">
+                <label for="portfolioTitleEn">Title (English)</label>
+                <input id="portfolioTitleEn" type="text" required />
+              </div>
+              <div class="field-group">
+                <label for="portfolioTitleAr">Title (Arabic)</label>
+                <input id="portfolioTitleAr" type="text" required />
+              </div>
+              <div class="field-group">
+                <label for="portfolioDescEn">Description (English)</label>
+                <textarea id="portfolioDescEn" rows="2"></textarea>
+              </div>
+              <div class="field-group">
+                <label for="portfolioDescAr">Description (Arabic)</label>
+                <textarea id="portfolioDescAr" rows="2"></textarea>
+              </div>
+              <div class="field-group">
+                <label for="portfolioTag">Tag / Category (optional)</label>
+                <input id="portfolioTag" type="text" placeholder="e.g. Landing Page, Online Store" />
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary" id="portfolioSubmitBtn">
+                  Save Project
+                </button>
+                <button type="button" class="btn btn-ghost" id="portfolioResetBtn">
+                  Clear
+                </button>
+              </div>
+              <p id="portfolioFormStatus" class="form-status" aria-live="polite"></p>
+            </form>
+
+            <div class="card admin-card">
+              <h3>Existing Projects</h3>
+              <div id="adminPortfolioList" class="admin-offers-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>
+
