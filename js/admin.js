@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://lakta-backend.onrender.com';
 
 async function fetchJSON(url, options = {}) {
   const fullUrl = url.startsWith('http') ? url : `${API_BASE}${url}`;
