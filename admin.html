@@ -14,6 +14,12 @@
           <span class="logo-text">لَقْطة (Lakta) – Admin</span>
         </div>
         <nav class="main-nav admin-nav">
+          <button
+  onclick="sessionStorage.removeItem('adminAuth'); window.location.href='admin-login.html';"
+  class="btn btn-ghost"
+  style="margin-left:auto">
+  Logout
+</button>
           <a href="#requests">Requests</a>
           <a href="#contact-info">Contact</a>
           <a href="#admin-portfolio">Portfolio</a>
