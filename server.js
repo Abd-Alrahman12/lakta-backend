@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+const resend = new Resend("re_YOUR_API_KEY_HERE"); // ← paste your Resend API key
 const app = express();
 
 app.use(cors());
