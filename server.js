@@ -165,3 +165,19 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
+
+/* EMAIL TEST — remove after testing */
+app.get('/api/test-email', async (req, res) => {
+  try {
+    await transporter.sendMail({
+      from: '"لَقْطة" <la8tastore@gmail.com>',
+      to: 'la8tastore@gmail.com',
+      subject: 'Test Email from Lakta Server',
+      text: 'If you receive this, email is working correctly!'
+    });
+    res.json({ success: true, message: 'Email sent! Check your inbox.' });
+  } catch (err) {
+    res.json({ success: false, error: err.message });
+  }
+});
+
