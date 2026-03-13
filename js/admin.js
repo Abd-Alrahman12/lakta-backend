@@ -1,3 +1,6 @@
+if (sessionStorage.getItem('adminAuth') !== 'true') {
+  window.location.href = 'admin-login.html';
+}
 const API_BASE = 'https://lakta-backend.onrender.com';
 
 async function fetchJSON(url, options = {}) {
