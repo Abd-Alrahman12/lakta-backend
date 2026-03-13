@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 /* EMAIL CONFIG — Resend */
-const resend = new Resend("re_YOUR_API_KEY_HERE"); // ← paste your Resend API key here
+const resend = new Resend("re_6aEGVirX_9qLfumyW2fpYh649ZptfpC9e"); // ← paste your Resend API key here
 
 /* ADMIN CREDENTIALS */
 const ADMIN_USERNAME = "la8ta";      // ← change to whatever you want
