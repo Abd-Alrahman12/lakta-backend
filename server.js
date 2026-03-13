@@ -135,20 +135,7 @@ app.post("/api/requests", async (req, res) => {
   }
 });
 
-/* EMAIL TEST — remove after confirming email works */
-app.get("/api/test-email", async (req, res) => {
-  try {
-    await resend.emails.send({
-      from: "Lakta <onboarding@resend.dev>",
-      to: "la8tastore@gmail.com",
-      subject: "Test Email from Lakta Server",
-      html: "<p>If you receive this, email is working correctly!</p>"
-    });
-    res.json({ success: true, message: "Email sent! Check your inbox." });
-  } catch (err) {
-    res.json({ success: false, error: err.message });
-  }
-});
+
 
 /* SERVER */
 const PORT = process.env.PORT || 3000;
