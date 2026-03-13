@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login – لَقْطة</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 360px;
+    }
+    .login-card h2 { margin-top: 0; text-align: center; }
+    .login-error {
+      color: #f97373;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="card login-card">
+      <h2>Admin Login</h2>
+      <div class="field-group">
+        <label for="adminUser">Username</label>
+        <input id="adminUser" type="text" autocomplete="username" />
+      </div>
+      <div class="field-group">
+        <label for="adminPass">Password</label>
+        <input id="adminPass" type="password" autocomplete="current-password" />
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:0.5rem" id="loginBtn">
+        Login
+      </button>
+      <p class="login-error" id="loginError">Incorrect username or password.</p>
+    </div>
+  </div>
+  <script>
+    // Check if already logged in
+    if (sessionStorage.getItem('adminAuth') === 'true') {
+      window.location.href = 'admin.html';
+    }
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const user = document.getElementById('adminUser').value.trim();
+      const pass = document.getElementById('adminPass').value;
+      const err  = document.getElementById('loginError');
+      err.style.display = 'none';
+
+      try {
+        const res = await fetch('https://lakta-backend.onrender.com/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: user, password: pass })
+        });
+        if (res.ok) {
+          sessionStorage.setItem('adminAuth', 'true');
+          window.location.href = 'admin.html';
+        } else {
+          err.style.display = 'block';
+        }
+      } catch {
+        err.textContent = 'Server error. Try again.';
+        err.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
