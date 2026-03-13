@@ -258,3 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initForm();
   initContact();
 });
+// Smooth scroll for all buttons with data-scroll-target
+document.querySelectorAll('[data-scroll-target]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-scroll-target');
+    const el = document.querySelector(target);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
