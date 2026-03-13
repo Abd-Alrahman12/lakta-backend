@@ -1,32 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const { Resend } = require("resend");
-const resend = new Resend("re_YOUR_API_KEY_HERE"); // ← paste your Resend API key
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname));
 
-/* EMAIL CONFIG */
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "la8tastore@gmail.com",
-    pass: "coometfratbuwnzg"  // your App Password — keep as-is
-  }
-});
+/* EMAIL CONFIG — Resend */
+const resend = new Resend("re_YOUR_API_KEY_HERE"); // ← paste your Resend API key here
 
-// Test the email connection on startup so you can see in Render logs if it works
-transporter.verify((error) => {
-  if (error) {
-    console.log("❌ Email transporter error:", error.message);
-  } else {
-    console.log("✅ Email transporter ready");
-  }
-});
-
-/* ADMIN CREDENTIALS — hardcoded as you requested */
+/* ADMIN CREDENTIALS */
 const ADMIN_USERNAME = "la8ta";      // ← change to whatever you want
 const ADMIN_PASSWORD = "lakta2024";  // ← change to a strong password
 
@@ -124,26 +109,15 @@ app.post("/api/requests", async (req, res) => {
   };
   requests.push(request);
 
-  // Respond to client immediately — don't make them wait for email
+  // Respond to client immediately
   res.json(request);
 
   // Send email after responding
   try {
-    await transporter.sendMail({
-      from: '"لَقْطة Website" <la8tastore@gmail.com>',
+    await resend.emails.send({
+      from: "Lakta <onboarding@resend.dev>",
       to: "la8tastore@gmail.com",
-      subject: `🆕 New Website Request – ${req.body.name}`,
-      text: `
-New Website Request
-───────────────────
-Name:         ${req.body.name}
-Email:        ${req.body.email}
-Phone:        ${req.body.phone}
-Website Type: ${req.body.websiteType}
-
-Message:
-${req.body.message || "No message provided"}
-      `.trim(),
+      subject: `New Website Request – ${req.body.name}`,
       html: `
         <h2>New Website Request</h2>
         <table style="font-family:sans-serif;font-size:14px;border-collapse:collapse">
@@ -151,8 +125,8 @@ ${req.body.message || "No message provided"}
           <tr><td style="padding:4px 12px 4px 0;color:#888">Email</td><td>${req.body.email}</td></tr>
           <tr><td style="padding:4px 12px 4px 0;color:#888">Phone</td><td>${req.body.phone}</td></tr>
           <tr><td style="padding:4px 12px 4px 0;color:#888">Type</td><td>${req.body.websiteType}</td></tr>
+          <tr><td style="padding:4px 12px 4px 0;color:#888">Message</td><td>${req.body.message || "No message provided"}</td></tr>
         </table>
-        <p style="margin-top:16px"><strong>Message:</strong><br>${req.body.message || "No message provided"}</p>
       `
     });
     console.log("✅ Email sent for request from:", req.body.name);
@@ -161,24 +135,23 @@ ${req.body.message || "No message provided"}
   }
 });
 
-/* SERVER */
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
-});
-
-/* EMAIL TEST — remove after testing */
-app.get('/api/test-email', async (req, res) => {
+/* EMAIL TEST — remove after confirming email works */
+app.get("/api/test-email", async (req, res) => {
   try {
-    await transporter.sendMail({
-      from: '"لَقْطة" <la8tastore@gmail.com>',
-      to: 'la8tastore@gmail.com',
-      subject: 'Test Email from Lakta Server',
-      text: 'If you receive this, email is working correctly!'
+    await resend.emails.send({
+      from: "Lakta <onboarding@resend.dev>",
+      to: "la8tastore@gmail.com",
+      subject: "Test Email from Lakta Server",
+      html: "<p>If you receive this, email is working correctly!</p>"
     });
-    res.json({ success: true, message: 'Email sent! Check your inbox.' });
+    res.json({ success: true, message: "Email sent! Check your inbox." });
   } catch (err) {
     res.json({ success: false, error: err.message });
   }
 });
 
+/* SERVER */
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
