@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "la8tastore@gmail.com",
-    pass: "coom etfr atbu wnzg"
+    pass: "coometfratbuwnzg"
   }
 });
 
@@ -87,7 +87,7 @@ app.put("/api/contact", (req, res) => {
   res.json(contact);
 });
 
-/* REQUESTS (WEBSITE ORDERS) */
+/* WEBSITE REQUESTS */
 
 app.get("/api/requests", (req, res) => {
   res.json(requests);
@@ -106,10 +106,20 @@ app.post("/api/requests", async (req, res) => {
   try {
 
     await transporter.sendMail({
-      from: "YOUR_EMAIL@gmail.com",
-      to: "YOUR_EMAIL@gmail.com",
+      from: "la8tastore@gmail.com",
+      to: "la8tastore@gmail.com",
       subject: "New Website Request",
-      text: JSON.stringify(req.body, null, 2)
+      text: `
+New Website Request
+
+Name: ${req.body.name}
+Email: ${req.body.email}
+Phone: ${req.body.phone}
+Website Type: ${req.body.websiteType}
+
+Message:
+${req.body.message}
+`
     });
 
   } catch (err) {
