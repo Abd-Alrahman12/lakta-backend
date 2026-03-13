@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 /* EMAIL CONFIG */
-const resend = new Resend("mongodb+srv://la8tastore:Abood123$#@@laktastore.mjjn2cx.mongodb.net/?appName=laktastore"); // ← your Resend API key
+const resend = new Resend("mongodb+srv://la8tastore:Abood123@laktastore.mjjn2cx.mongodb.net/?appName=laktastore"); // ← your Resend API key
 
 /* ADMIN CREDENTIALS */
 const ADMIN_USERNAME = "la8ta";      // ← your username
