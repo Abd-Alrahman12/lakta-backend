@@ -184,7 +184,14 @@ app.get("/api/requests", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
+app.delete("/api/requests/:id", async (req, res) => {
+  try {
+    await Request.findByIdAndDelete(req.params.id);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 app.post("/api/requests", async (req, res) => {
   try {
     const request = await Request.create(req.body);
