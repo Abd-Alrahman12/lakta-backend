@@ -20,7 +20,7 @@ async function loadRequests() {
     tbody.innerHTML = '';
     if (!requests.length) {
       const row = document.createElement('tr');
-      row.innerHTML = `<td colspan="6" class="table-empty">No requests yet.</td>`;
+      row.innerHTML = `<td colspan="7" class="table-empty">No requests yet.</td>`;
       tbody.appendChild(row);
       return;
     }
@@ -34,12 +34,33 @@ async function loadRequests() {
         <td>${req.phone}</td>
         <td>${req.websiteType}</td>
         <td>${req.message || ''}</td>
+        <td>
+          <button class="btn btn-ghost" style="font-size:0.75rem;padding:0.25rem 0.6rem"
+            data-req-id="${req._id || req.id}">
+            Delete
+          </button>
+        </td>
       `;
       tbody.appendChild(row);
     });
+
+    // Handle delete clicks
+    tbody.addEventListener('click', async (e) => {
+      const btn = e.target.closest('button[data-req-id]');
+      if (!btn) return;
+      const id = btn.dataset.reqId;
+      if (!window.confirm('Delete this request?')) return;
+      try {
+        await fetchJSON(`/api/requests/${id}`, { method: 'DELETE' });
+        await loadRequests();
+      } catch (err) {
+        alert('Failed to delete request.');
+      }
+    });
+
   } catch (err) {
     console.error('Failed to load requests', err);
-    tbody.innerHTML = `<tr><td colspan="6" class="table-empty">Failed to load requests.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="table-empty">Failed to load requests.</td></tr>`;
   }
 }
 
